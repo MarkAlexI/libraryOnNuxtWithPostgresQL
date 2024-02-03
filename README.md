@@ -1,0 +1,2 @@
+# libraryOnNuxtWithPostgresQL
+Play with PostgressQL.
