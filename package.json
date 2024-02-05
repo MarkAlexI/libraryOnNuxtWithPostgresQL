@@ -2,7 +2,7 @@
   "name": "libraryOnNuxtWithPostgresQL",
   "author": "markalexi",
   "description": "Mix of Nuxt, Tailwind, VueUse and PostgresQL",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,6 +19,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@vueuse/core": "^10.7.2"
+    "@vueuse/core": "^10.7.2",
+    "pg": "^8.11.3"
   }
 }

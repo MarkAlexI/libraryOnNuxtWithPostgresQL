@@ -4,15 +4,22 @@
 
     <section>
       <h2>Фічери</h2>
+      <p>{{ retrievedData }}</p>
       <BookList :title="'Фічери'" :books="featuredBooks" />
     </section>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from '#imports';
 import BookList from './BookList.vue';
 
+const getData = async () => {
+  const data = await useFetch('/api/data');
+  return data;
+};
+
+const retrievedData = getData();
 const featuredBooks = ref([]);
 
 onMounted(() => {
