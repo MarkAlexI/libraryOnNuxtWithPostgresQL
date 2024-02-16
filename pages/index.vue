@@ -4,7 +4,7 @@
 
     <section>
       <h2>Фічери</h2>
-      <p>{{ retrievedData }}</p>
+      <p>{{ users }}</p>
       <BookList :title="'Фічери'" :books="featuredBooks" />
     </section>
   </div>
@@ -14,12 +14,8 @@
 import { ref, onMounted } from '#imports';
 import BookList from './BookList.vue';
 
-const getData = async () => {
-  const data = await useFetch('/api/data');
-  return data;
-};
-
-const retrievedData = getData();
+const { data } = useFetch('/api/data');
+const users = ref(JSON.stringify(data));
 const featuredBooks = ref([]);
 
 onMounted(() => {
