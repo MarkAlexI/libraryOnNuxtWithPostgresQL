@@ -11,25 +11,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from '#imports';
-import BookList from './BookList.vue';
+import BookList from "./BookList.vue";
+import { ref, onMounted } from "#imports";
 
-const { data } = useFetch('/api/data');
+const { data } = useFetch("/api/data");
 const users = ref(JSON.stringify(data));
 const featuredBooks = ref([]);
 
 onMounted(() => {
   featuredBooks.value = [
     {
-      "id": "0",
-      "title": "Lord of the rings",
-      "author": "R.R. Tolkien"
+      id: "0",
+      title: "Lord of the rings",
+      author: "R.R. Tolkien",
     },
     {
-      "id": "0",
-      "title": "Кобзар",
-      "author": "Т.Г. Шевченко"
-    }
+      id: "0",
+      title: "Кобзар",
+      author: "Т.Г. Шевченко",
+    },
   ];
 });
 </script>

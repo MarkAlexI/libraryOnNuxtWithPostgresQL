@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
-  css: ['/assets/css/main.css'],
+  modules: ["@nuxtjs/tailwindcss"],
+  css: ["/assets/css/main.css"],
   ssr: true,
   runtimeConfig: {
     pg_user: process.env.PG_USER,
@@ -11,13 +11,13 @@ export default defineNuxtConfig({
     pg_port: Number.parseInt(process.env.PG_PORT, 10),
   },
   experimental: {
-    payloadExtraction: false
+    payloadExtraction: false,
   },
   router: {
     options: {
-      strict: false
-    }
+      strict: false,
+    },
   },
   sourcemap: false,
-  devtools: { enabled: true }
-})
+  devtools: { enabled: true },
+});

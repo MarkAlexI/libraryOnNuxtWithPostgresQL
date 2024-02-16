@@ -10,9 +10,9 @@
   </div>
 </template>
 
-<script setup>
-defineProps([
-  'title',
-  'books'
-]);
+<script setup lang="ts">
+defineProps<{
+  title?: string;
+  books?: array;
+}>();
 </script>

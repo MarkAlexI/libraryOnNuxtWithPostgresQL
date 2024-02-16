@@ -1,4 +1,4 @@
-import pkg from 'pg';
+import pkg from "pg";
 const { Client } = pkg;
 
 const config = useRuntimeConfig();
@@ -29,17 +29,17 @@ export default defineEventHandler(async () => {
   const db = await createClient();
 
   try {
-    const { rows: users } = await db.query('SELECT * FROM users');
+    const { rows: users } = await db.query("SELECT * FROM users");
     const duration = Date.now() - startTime;
 
     return {
-      users: users,
-      duration: duration,
+      users,
+      duration,
     };
   } catch (error) {
-    console.log(error.message, 'query error');
+    console.log(error.message, "query error");
   } finally {
     await db.end();
-    console.log('End of connection.');
+    console.log("End of connection.");
   }
 });
