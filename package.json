@@ -2,7 +2,7 @@
   "name": "libraryOnNuxtWithPostgresQL",
   "author": "markalexi",
   "description": "Mix of Nuxt, Tailwind, VueUse and PostgresQL",
-  "version": "1.3.1",
+  "version": "1.4.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,21 +16,28 @@
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
     "prepare": "husky",
-    "test": "echo \"Need more test\" && exit 0"
+    "test": "vitest"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.11.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.11.2",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/test-utils": "^2.4.4",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-vitest": "^0.3.22",
+    "happy-dom": "^13.3.8",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "nuxt": "^3.10.0",
+    "playwright-core": "^1.41.2",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3",
+    "vitest": "^1.3.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
