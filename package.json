@@ -2,7 +2,7 @@
   "name": "libraryOnNuxtWithPostgresQL",
   "author": "markalexi",
   "description": "Mix of Nuxt, Tailwind, VueUse and PostgresQL",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,7 +16,7 @@
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^3.11.0",

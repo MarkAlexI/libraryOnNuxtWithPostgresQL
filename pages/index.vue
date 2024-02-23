@@ -24,11 +24,13 @@ onMounted(() => {
       id: "0",
       title: "Lord of the rings",
       author: "R.R. Tolkien",
+      year: 2000,
     },
     {
       id: "0",
       title: "Кобзар",
       author: "Т.Г. Шевченко",
+      year: 2001,
     },
   ];
 });
