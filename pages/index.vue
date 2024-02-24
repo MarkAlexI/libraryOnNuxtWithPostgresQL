@@ -11,9 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import BookList from "./BookList.vue";
-import { ref, onMounted } from "#imports";
-
 const { data } = useFetch("/api/data");
 const users = ref(JSON.stringify(data));
 const featuredBooks = ref([]);

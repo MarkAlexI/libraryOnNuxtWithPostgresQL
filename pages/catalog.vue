@@ -50,8 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import BookList from "./BookList.vue";
-
 const books = ref([]);
 const showForm = ref(false);
 const editing = ref(false);
