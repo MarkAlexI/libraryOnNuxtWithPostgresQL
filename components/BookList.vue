@@ -4,7 +4,7 @@
 
     <ul class="mt-4">
       <li v-for="book in books" :key="book.id" class="mb-2">
-        {{ book.title }} - {{ book.author }} ({{ book.year }})
+        {{ book.title }} - {{ book.author }} ({{ book.published_year }})
       </li>
     </ul>
   </div>

@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center flex-wrap" style="height: 100vh">
+  <div
+    class="flex flex-col items-center justify-center flex-wrap"
+    style="height: 100vh"
+  >
     <h1 class="text-center">Головна сторінка</h1>
 
     <section>
