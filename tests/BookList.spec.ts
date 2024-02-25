@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 
-import BookList from "../pages/BookList.vue";
+import BookList from "../components/BookList.vue";
 
 describe("BookList", () => {
   it("is a Vue instance", () => {
