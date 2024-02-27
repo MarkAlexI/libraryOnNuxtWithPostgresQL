@@ -3,17 +3,25 @@
     class="flex flex-col items-center justify-center flex-wrap"
     style="height: 100vh"
   >
-    <h1 class="text-center">Головна сторінка</h1>
+    <h1 class="text-center">Main page</h1>
 
-    <section>
-      <BookList :title="'Фічери'" :books="featuredBooks" />
+    <section v-if="pending">
+      <p>Loading...</p>
     </section>
+    <section v-else-if="data">
+      <BookList :title="'New'" :books="books" />
+    </section>
+    <section v-else-if="error">
+      <p>Error: {{ error }}</p>
+    </section>
+
+    <button @click="refresh">Refresh</button>
   </div>
 </template>
 
 <script setup lang="ts">
-const featuredBooks = ref([]);
-const { data } = await useFetch("/api/data");
+const books = ref([]);
+const { data, error, pending, refresh } = await fetchData();
 
-featuredBooks.value = data.value.books;
+books.value = data.value.books;
 </script>

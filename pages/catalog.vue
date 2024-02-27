@@ -60,7 +60,7 @@ const resetForm = () => {
   editing.value = false;
 };
 
-const { data } = await useFetch("/api/data");
+const { data } = await fetchData();
 
 books.value = data.value.books;
 </script>
