@@ -6,7 +6,7 @@
 
     <div v-if="showForm" class="mt-4">
       <h3 class="text-xl mb-2">{{ editing ? "Edit book" : "Add new book" }}</h3>
-      <form class="flex flex-col space-y-2" @submit.prevent="resetForm">
+      <form class="flex flex-col space-y-2" @submit.prevent="handleSubmit">
         <label for="title" class="font-semibold">Title:</label>
         <input
           v-model="form.title"
@@ -58,6 +58,22 @@ const form = ref({ title: "", author: "", year: "" });
 const resetForm = () => {
   form.value = { title: "", author: "", year: "" };
   editing.value = false;
+};
+
+async function saveBook(data) {
+  await $fetch("/api/data/books", {
+    method: "POST",
+    body: data
+  });
+}
+
+const handleSubmit = async () => {
+  try {
+    await saveBook(form.value);
+    resetForm();
+  } catch (error) {
+    console.error("Book saving error: ", error);
+  }
 };
 
 const { data } = await fetchData();
