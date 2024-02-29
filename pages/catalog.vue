@@ -31,6 +31,18 @@
           class="border rounded-md p-2"
         />
 
+        <label for="genre" class="font-semibold">Genre:</label>
+        <select v-model="form.genre" class="border rounded-md p-2">
+          <option value="new">New</option>
+          <option value="popular">Popular</option>
+          <option value="poetry">Poetry</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="classique">Classique</option>
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="adventures">Adventures</option>
+          <option value="detective">Detective</option>
+        </select>
+
         <button
           type="submit"
           class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
@@ -53,10 +65,10 @@
 const books = ref([]);
 const showForm = ref(false);
 const editing = ref(false);
-const form = ref({ title: "", author: "", year: "" });
+const form = ref({ title: "", author: "", year: "", genre: "" });
 
 const resetForm = () => {
-  form.value = { title: "", author: "", year: "" };
+  form.value = { title: "", author: "", year: "", genre: "" };
   editing.value = false;
 };
 
