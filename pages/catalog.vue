@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div
+    class="dark:md:hover:bg-fuchsia-600 flex flex-col items-center justify-center flex-wrap"
+    style="height: 100vh"
+  >
     <h1 class="text-3xl font-bold mb-4">Catalog of books</h1>
 
     <BookList :title="'List of books'" :books="books" />
