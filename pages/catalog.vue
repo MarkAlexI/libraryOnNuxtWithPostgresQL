@@ -5,7 +5,12 @@
   >
     <h1 class="text-3xl font-bold mb-4">Catalog of books</h1>
 
-    <BookList :title="'List of books'" :books="books" />
+    <BookList
+      :title="'List of books'"
+      :books="books"
+      :editable="true"
+      @edit-book="handleEditBook"
+    />
 
     <div v-if="showForm" class="mt-4">
       <h3 class="text-xl mb-2">{{ editing ? "Edit book" : "Add new book" }}</h3>
@@ -52,6 +57,14 @@
         >
           {{ editing ? "Save" : "Add" }}
         </button>
+
+        <button
+          v-if="editing"
+          class="bg-green-500 text-white font-semibold py-2 px-4 rounded-md"
+          @click.prevent="resetForm"
+        >
+          Cancel editing
+        </button>
       </form>
     </div>
 
@@ -68,10 +81,23 @@
 const books = ref([]);
 const showForm = ref(false);
 const editing = ref(false);
-const form = ref({ title: "", author: "", year: "", genre: "" });
+
+const form = ref({
+  id: null,
+  title: "",
+  author: "",
+  year: "",
+  genre: ""
+});
 
 const resetForm = () => {
-  form.value = { title: "", author: "", year: "", genre: "" };
+  form.value = {
+    id: null,
+    title: "",
+    author: "",
+    year: "",
+    genre: ""
+  };
   editing.value = false;
 };
 
@@ -82,9 +108,31 @@ async function saveBook(data) {
   });
 }
 
+async function updateBook(data) {
+  await $fetch("/api/data/books", {
+    method: "PUT",
+    body: data
+  });
+}
+
+const handleEditBook = (book) =>  {
+  form.value = {
+    id: book.user_id,
+    title: book.title,
+    author: book.author,
+    year: book.published_year,
+    genre: book.type_of_book
+  };
+  editing.value = true;
+};
+
 const handleSubmit = async () => {
   try {
-    await saveBook(form.value);
+    if (editing.value) {
+      await updateBook(form.value);
+    } else {
+      await saveBook(form.value);
+    }
     resetForm();
   } catch (error) {
     console.error("Book saving error: ", error);
