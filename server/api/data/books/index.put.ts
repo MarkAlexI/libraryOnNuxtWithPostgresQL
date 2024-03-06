@@ -8,11 +8,10 @@ export default defineEventHandler(async (event) => {
     const query = `
       UPDATE books 
       SET title = $1, author = $2, published_year = $3, type_of_book = $4
-      WHERE id = $5
+      WHERE user_id = $5
     `;
     const result = await db.query(query, [title, author, year, genre, id]);
     console.log("The book was successfully updated.");
-    console.log(result);
 
     return {
       result,

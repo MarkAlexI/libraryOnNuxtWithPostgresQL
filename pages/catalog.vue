@@ -117,7 +117,7 @@ async function updateBook(data) {
 
 const handleEditBook = (book) =>  {
   form.value = {
-    id: book.user_id,
+    id: book.id,
     title: book.title,
     author: book.author,
     year: book.published_year,
