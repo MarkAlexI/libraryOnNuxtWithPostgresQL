@@ -30,5 +30,5 @@
 const books = ref([]);
 const { data, error, pending, refresh } = await fetchData();
 
-books.value = data.value.books;console.log(books.value);
+books.value = data.value.books;
 </script>

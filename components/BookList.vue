@@ -14,7 +14,7 @@
           class="ml-2 text-blue-500"
           @click="editBook(book)"
         >
-          Edit {{ book.id }}
+          Edit
         </button>
       </li>
     </ul>

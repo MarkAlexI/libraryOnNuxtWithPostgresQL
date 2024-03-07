@@ -82,6 +82,9 @@ const books = ref([]);
 const showForm = ref(false);
 const editing = ref(false);
 
+const { data, refresh } = await fetchData();
+books.value = data.value.books;
+
 const form = ref({
   id: null,
   title: "",
@@ -124,6 +127,7 @@ const handleEditBook = (book) =>  {
     genre: book.type_of_book
   };
   editing.value = true;
+  showForm.value = true;
 };
 
 const handleSubmit = async () => {
@@ -133,13 +137,12 @@ const handleSubmit = async () => {
     } else {
       await saveBook(form.value);
     }
+ 
     resetForm();
+    showForm.value = false;
+    refresh();
   } catch (error) {
     console.error("Book saving error: ", error);
   }
 };
-
-const { data } = await fetchData();
-
-books.value = data.value.books;
 </script>
