@@ -10,6 +10,7 @@
       :books="books"
       :editable="true"
       @edit-book="handleEditBook"
+      @delete-book="handleDeleteBook"
     />
 
     <div v-if="showForm" class="mt-4">
@@ -90,7 +91,7 @@ const form = ref({
   title: "",
   author: "",
   year: "",
-  genre: ""
+  genre: "",
 });
 
 const resetForm = () => {
@@ -99,7 +100,7 @@ const resetForm = () => {
     title: "",
     author: "",
     year: "",
-    genre: ""
+    genre: "",
   };
   editing.value = false;
 };
@@ -107,27 +108,42 @@ const resetForm = () => {
 async function saveBook(data) {
   await $fetch("/api/data/books", {
     method: "POST",
-    body: data
+    body: data,
   });
 }
 
 async function updateBook(data) {
   await $fetch("/api/data/books", {
     method: "PUT",
-    body: data
+    body: data,
   });
 }
 
-const handleEditBook = (book) =>  {
+async function deleteBook(bookId) {
+  await $fetch(`/api/data/books/${bookId}`, {
+    method: "DELETE",
+  });
+}
+
+const handleEditBook = (book) => {
   form.value = {
     id: book.id,
     title: book.title,
     author: book.author,
     year: book.published_year,
-    genre: book.type_of_book
+    genre: book.type_of_book,
   };
   editing.value = true;
   showForm.value = true;
+};
+
+const handleDeleteBook = async (book) => {
+  try {
+    await deleteBook(book.id);
+    await refresh();
+  } catch (error) {
+    console.error("Book deletion error: ", error);
+  }
 };
 
 const handleSubmit = async () => {
@@ -137,7 +153,7 @@ const handleSubmit = async () => {
     } else {
       await saveBook(form.value);
     }
- 
+
     resetForm();
     showForm.value = false;
     refresh();

@@ -9,11 +9,7 @@
       <p>Loading...</p>
     </section>
     <section v-else-if="data">
-      <BookList
-        :title="'New'"
-        :books="books"
-        :editable="false"
-      />
+      <BookList :title="'New'" :books="books" :editable="false" />
     </section>
     <section v-else-if="error">
       <p>Error: {{ error }}</p>
@@ -22,7 +18,9 @@
     <button
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
       @click="refresh"
-    >Refresh</button>
+    >
+      Refresh
+    </button>
   </div>
 </template>
 
