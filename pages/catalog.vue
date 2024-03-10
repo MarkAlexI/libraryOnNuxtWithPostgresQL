@@ -120,7 +120,7 @@ async function updateBook(data) {
 }
 
 async function deleteBook(bookId) {
-  await $fetch(`/api/data/books/${bookId}`, {
+  await $fetch(`/api/data/books?id=${bookId}`, {
     method: "DELETE",
   });
 }
