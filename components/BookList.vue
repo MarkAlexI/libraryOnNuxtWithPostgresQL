@@ -31,10 +31,7 @@ defineProps<{
   editable?: boolean;
 }>();
 
-const emit = defineEmits([
-  "edit-book",
-  "delete-book"
-]);
+const emit = defineEmits(["edit-book", "delete-book"]);
 
 const editBook = (book: any) => {
   emit("edit-book", book);

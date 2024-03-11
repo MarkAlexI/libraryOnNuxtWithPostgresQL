@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const duration = Date.now() - startTime;
 
     const query = {
-      text: 'DELETE FROM books WHERE id = $1',
+      text: "DELETE FROM books WHERE id = $1",
       values: [id],
     };
     const result = await db.query(query);
