@@ -25,19 +25,29 @@
 </template>
 
 <script setup lang="ts">
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  published_year: number;
+  type_of_book: string;
+  user_id: number;
+  added_at: string;
+};
+
 defineProps<{
   title?: string;
-  books?: Array<any>;
+  books?: Array<Book>;
   editable?: boolean;
 }>();
 
 const emit = defineEmits(["edit-book", "delete-book"]);
 
-const editBook = (book: any) => {
+const editBook = (book: Book) => {
   emit("edit-book", book);
 };
 
-const deleteBook = (book: any) => {
+const deleteBook = (book: Book) => {
   emit("delete-book", book);
 };
 </script>
