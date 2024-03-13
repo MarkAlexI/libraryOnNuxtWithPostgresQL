@@ -25,16 +25,6 @@
 </template>
 
 <script setup lang="ts">
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  published_year: number;
-  type_of_book: string;
-  user_id: number;
-  added_at: string;
-};
-
 defineProps<{
   title?: string;
   books?: Array<Book>;

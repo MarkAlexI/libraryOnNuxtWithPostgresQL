@@ -86,46 +86,46 @@ const editing = ref(false);
 const { data, refresh } = await fetchData();
 books.value = data.value.books;
 
-const form = ref({
+const form = ref<BookForm>({
   id: null,
   title: "",
   author: "",
-  year: "",
+  year: null,
   genre: "",
 });
 
-const resetForm = () => {
+const resetForm = (): void => {
   form.value = {
     id: null,
     title: "",
     author: "",
-    year: "",
+    year: null,
     genre: "",
   };
   editing.value = false;
 };
 
-async function saveBook(data) {
+async function saveBook(data: BookForm) {
   await $fetch("/api/data/books", {
     method: "POST",
     body: data,
   });
 }
 
-async function updateBook(data) {
+async function updateBook(data: BookForm) {
   await $fetch("/api/data/books", {
     method: "PUT",
     body: data,
   });
 }
 
-async function deleteBook(bookId) {
+async function deleteBook(bookId: number) {
   await $fetch(`/api/data/books?id=${bookId}`, {
     method: "DELETE",
   });
 }
 
-const handleEditBook = (book) => {
+const handleEditBook = (book: Book) => {
   form.value = {
     id: book.id,
     title: book.title,
@@ -137,7 +137,7 @@ const handleEditBook = (book) => {
   showForm.value = true;
 };
 
-const handleDeleteBook = async (book) => {
+const handleDeleteBook = async (book: Book) => {
   try {
     await deleteBook(book.id);
     await refresh();
