@@ -1,14 +1,16 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+import type { NuxtConfig } from "@nuxt/types";
+
+const config: NuxtConfig = {
+  buildModules: ["@nuxt/typescript-build"],
   modules: ["@nuxtjs/tailwindcss", "@nuxt/test-utils/module"],
   css: ["/assets/css/main.css"],
   ssr: true,
   runtimeConfig: {
-    pg_user: process.env.PG_USER,
-    pg_host: process.env.PG_HOST,
-    pg_db: process.env.PG_DB,
-    pg_pass: process.env.PG_PASS,
-    pg_port: Number.parseInt(process.env.PG_PORT, 10),
+    PG_USER: process.env.PG_USER,
+    PG_HOST: process.env.PG_HOST,
+    PG_DB: process.env.PG_DB,
+    PG_PASS: process.env.PG_PASS,
+    PG_PORT: Number.parseInt(process.env.PG_PORT, 10),
   },
   experimental: {
     payloadExtraction: false,
@@ -20,4 +22,6 @@ export default defineNuxtConfig({
   },
   sourcemap: false,
   devtools: { enabled: true },
-});
+};
+
+export default config;

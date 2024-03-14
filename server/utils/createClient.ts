@@ -7,14 +7,14 @@ export default async function (): Promise {
   let client = null;
 
   try {
-    const { pg_user, pg_host, pg_db, pg_pass, pg_port } = config;
+    const { PG_USER, PG_HOST, PG_DB, PG_PASS, PG_PORT } = config;
 
     client = new Client({
-      user: pg_user,
-      host: pg_host,
-      database: pg_db,
-      password: pg_pass,
-      port: pg_port,
+      user: PG_USER,
+      host: PG_HOST,
+      database: PG_DB,
+      password: PG_PASS,
+      port: PG_PORT,
     });
 
     await client.connect();
