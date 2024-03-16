@@ -3,7 +3,7 @@
 <template>
   <div>
     <nav
-      class="mt-8 ml-4 fixed top-0 w-full shadow-md bg-gray-100 bg-opacity-75 backdrop-blur-lg"
+      class="mt-8 ml-4 fixed top-0 w-full shadow-md bg-gray-100 bg-opacity-50 backdrop-blur-lg"
     >
       <ul class="flex">
         <li class="mr-6 ml-3">
