@@ -25,14 +25,15 @@ const registered = ref(false);
 
 const register = async () => {
   try {
-    const response = await fetch("/api/register", {
+    const data = await $fetch("/api/register", {
       method: "POST",
       body: {
         email: email.value,
         password: password.value
       }
     });
-    if (response.data.success) {
+
+    if (data.success) {
       registered.value = true;
     } else {
       alert("Registration failed. Please try again.");

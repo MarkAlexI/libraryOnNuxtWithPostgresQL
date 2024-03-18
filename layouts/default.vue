@@ -17,7 +17,7 @@
           >
         </li>
         <li>
-          <a href="#" class="text-blue-500 hover:underline">Login</a>
+          <a href="/login" class="text-blue-500 hover:underline">Login</a>
         </li>
       </ul>
     </nav>
