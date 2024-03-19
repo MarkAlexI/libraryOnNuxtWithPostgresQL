@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <div>
     <nav
@@ -7,17 +5,19 @@
     >
       <ul class="flex">
         <li class="mr-6 ml-3">
-          <a href="/" class="text-blue-500 hover:text-gray-800 underline"
-            >Main</a
+          <NuxtLink to="/" class="text-blue-500 hover:text-gray-800 underline"
+            >Main</NuxtLink
           >
         </li>
         <li class="mr-6">
-          <a href="/catalog" class="text-blue-500 hover:text-gray-800 underline"
-            >Catalog</a
+          <NuxtLink to="/catalog" class="text-blue-500 hover:text-gray-800 underline"
+            >Catalog</NuxtLink
           >
         </li>
         <li>
-          <a href="/login" class="text-blue-500 hover:underline">Login</a>
+          <NuxtLink to="/login" class="text-blue-500 hover:underline"
+            >Login</NuxtLink
+          >
         </li>
       </ul>
     </nav>
@@ -36,5 +36,3 @@
     </footer>
   </div>
 </template>
-
-<style scoped></style>

@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 
 export default defineEventHandler(async (event) => {
   const db = await createClient();
-  const { email, password } = await readBody(event);
+  const { username, email, password, role = "regular" } = await readBody(event);
 
   try {
     const hashedPassword = crypto
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
         message: "User already exists"
       };
     } else {
-      await db.query("INSERT INTO users (email, password) VALUES ($1, $2)", [email, hashedPassword]);
+      await db.query("INSERT INTO users (username, email, password, role) VALUES ($1, $2, $3, $4)", [username, email, hashedPassword, role]);
 
       return {
         success: true
