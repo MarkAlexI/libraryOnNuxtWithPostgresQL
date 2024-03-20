@@ -31,7 +31,7 @@
         Login
       </button>
     </form>
-    <div v-if="!loggedIn">
+    <div v-if="!isLoggedIn">
       <h2 class="text-lg font-bold mt-4">Don't have an account?</h2>
       <router-link to="/register" class="text-blue-500 hover:underline"
         >Sign up here</router-link
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 const email = ref("");
 const password = ref("");
-const loggedIn = ref(false);
+const isLoggedIn = useState<boolean>("loggedIn", () => false);
 
 const login = async () => {
   try {
@@ -55,7 +55,7 @@ const login = async () => {
       },
     });
     if (response.success) {
-      loggedIn.value = true;
+      isLoggedIn.value = true;
       await navigateTo("/");
     } else {
       alert("Invalid email or password.");

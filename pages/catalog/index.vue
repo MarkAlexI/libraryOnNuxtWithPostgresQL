@@ -8,7 +8,7 @@
     <BookList
       :title="'List of books'"
       :books="books"
-      :editable="true"
+      :editable="isLoggedIn"
       @edit-book="handleEditBook"
       @delete-book="handleDeleteBook"
     />
@@ -81,6 +81,7 @@
 <script setup lang="ts">
 const books = ref([]);
 const showForm = ref(false);
+const isLoggedIn = useState("loggedIn");
 const editing = ref(false);
 
 const { data, refresh } = await fetchData();
