@@ -47,14 +47,14 @@ const loggedIn = ref(false);
 
 const login = async () => {
   try {
-    const response = await fetch("/api/login", {
+    const response = await $fetch("/api/login", {
       method: "POST",
       body: {
         email: email.value,
         password: password.value,
       },
     });
-    if (response.data.success) {
+    if (response.success) {
       loggedIn.value = true;
       await navigateTo("/");
     } else {
