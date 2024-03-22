@@ -6,21 +6,18 @@ const config: NuxtConfig = {
       meta: [
         {
           name: "viewport",
-          content: "width=device-width, initial-scale=1"
-        }
+          content: "width=device-width, initial-scale=1",
+        },
       ],
       noscript: [
         {
-          children: "JavaScript is required"
-        }
+          children: "JavaScript is required",
+        },
       ],
-    }
+    },
   },
   buildModules: ["@nuxt/typescript-build"],
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/test-utils/module"
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/test-utils/module"],
   css: ["/assets/css/main.css"],
   ssr: true,
   runtimeConfig: {

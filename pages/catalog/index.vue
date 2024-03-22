@@ -88,7 +88,7 @@ const { data, refresh } = await fetchData();
 books.value = data.value.books;
 
 const form = ref<BookForm>({
-  id: null,
+  id: "",
   title: "",
   author: "",
   year: null,
@@ -97,7 +97,7 @@ const form = ref<BookForm>({
 
 const resetForm = (): void => {
   form.value = {
-    id: null,
+    id: "",
     title: "",
     author: "",
     year: null,
@@ -120,7 +120,7 @@ async function updateBook(data: BookForm) {
   });
 }
 
-async function deleteBook(bookId: number) {
+async function deleteBook(bookId: string) {
   await $fetch(`/api/data/books?id=${bookId}`, {
     method: "DELETE",
   });

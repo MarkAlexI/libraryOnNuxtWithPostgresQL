@@ -10,7 +10,9 @@
           >
         </li>
         <li class="mr-6">
-          <NuxtLink to="/catalog" class="text-blue-500 hover:text-gray-800 underline"
+          <NuxtLink
+            to="/catalog"
+            class="text-blue-500 hover:text-gray-800 underline"
             >Catalog</NuxtLink
           >
         </li>

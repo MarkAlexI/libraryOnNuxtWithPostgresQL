@@ -10,7 +10,10 @@ export default defineEventHandler(async (event) => {
       .update(password)
       .digest("hex");
 
-    const existingUser = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+    const existingUser = await db.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email],
+    );
 
     if (existingUser.rows.length > 0) {
       const user = existingUser.rows[0];
@@ -18,25 +21,25 @@ export default defineEventHandler(async (event) => {
       if (user.password === hashedPassword) {
         return {
           success: true,
-          message: "OK"
+          message: "OK",
         };
       } else {
         return {
           success: false,
-          message: "Some credentials are wrong."
+          message: "Some credentials are wrong.",
         };
       }
     } else {
       return {
         success: false,
-        message: "User not found."
+        message: "User not found.",
       };
     }
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     return {
       success: false,
-      payload: error
+      payload: error,
     };
   }
 });
