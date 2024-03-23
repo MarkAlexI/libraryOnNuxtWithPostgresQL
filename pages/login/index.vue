@@ -37,6 +37,14 @@
         >Sign up here</router-link
       >
     </div>
+    <div v-else>
+      <p
+        class="text-center text-blue-500 hover:text-gray-800 underline"
+        @click="logout"
+      >
+        Logout
+      </p>
+    </div>
   </div>
 </template>
 
@@ -46,6 +54,8 @@ const password = ref("");
 const isLoggedIn = useState<boolean>("loggedIn", () => false);
 
 const login = async () => {
+  if (!email.value || !password.value) return;
+
   try {
     const response = await $fetch("/api/login", {
       method: "POST",
@@ -64,5 +74,9 @@ const login = async () => {
     console.error("Login failed:", error);
     alert("Login failed. Please try again later.");
   }
+};
+
+const logout = () => {
+  isLoggedIn.value = false;
 };
 </script>

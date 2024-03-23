@@ -50,7 +50,7 @@
         Register
       </button>
     </form>
-    <div v-if="registered">
+    <div v-if="isLoggedIn">
       <p class="mt-4 text-green-500 font-bold">Registration successful!</p>
     </div>
   </div>
@@ -60,7 +60,7 @@
 const username = ref("");
 const email = ref("");
 const password = ref("");
-const registered = ref(false);
+const isLoggedIn = useState<boolean>("loggedIn");
 
 const register = async () => {
   try {
@@ -74,7 +74,8 @@ const register = async () => {
     });
 
     if (data.success) {
-      registered.value = true;
+      isLoggedIn.value = true;
+      await navigateTo("/");
     } else {
       alert("Registration failed. Please try again.");
     }
