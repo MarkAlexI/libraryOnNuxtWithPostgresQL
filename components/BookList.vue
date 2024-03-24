@@ -1,6 +1,10 @@
 <template>
-  <div class="bg-white p-4 rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold">{{ title }}</h2>
+  <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+    <h2
+      class="first-letter:text-orange-500 first-letter:uppercase text-2xl font-bold"
+    >
+      {{ title }}
+    </h2>
 
     <ul class="mt-4">
       <li v-for="book in books" :key="book.id" class="mb-2">

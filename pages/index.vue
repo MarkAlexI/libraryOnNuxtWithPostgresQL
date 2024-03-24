@@ -9,7 +9,13 @@
       <p>Loading...</p>
     </section>
     <section v-else-if="data">
-      <BookList :title="'New'" :books="books" :editable="false" />
+      <div v-for="genre in genres" :key="genre">
+        <BookList
+          :title="genre"
+          :books="filteredBooks(genre)"
+          :editable="false"
+        />
+      </div>
     </section>
     <section v-else-if="error">
       <p>Error: {{ error }}</p>
@@ -29,4 +35,20 @@ const books = ref([]);
 const { data, error, pending, refresh } = await fetchData();
 
 books.value = data.value.books;
+
+const genres = computed(() => {
+  const uniqueGenres = new Set<string>();
+
+  books.value.forEach((book: Book) => {
+    uniqueGenres.add(book.type_of_book);
+  });
+
+  return Array.from(uniqueGenres);
+});
+
+const filteredBooks = (genre: string): Array<Book> => {
+  return books.value.filter((book: Book) => {
+    return book.type_of_book === genre;
+  });
+};
 </script>
