@@ -37,11 +37,11 @@ defineProps<{
 
 const emit = defineEmits(["edit-book", "delete-book"]);
 
-const editBook = (book: Book) => {
+const editBook = (book: Book): void => {
   emit("edit-book", book);
 };
 
-const deleteBook = (book: Book) => {
+const deleteBook = (book: Book): void => {
   emit("delete-book", book);
 };
 </script>
