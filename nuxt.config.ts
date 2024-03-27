@@ -16,6 +16,9 @@ const config: NuxtConfig = {
       ],
     },
   },
+  build: {
+    transpile: ["rxjs"],
+  },
   buildModules: ["@nuxt/typescript-build"],
   modules: ["@nuxtjs/tailwindcss", "@nuxt/test-utils/module"],
   css: ["/assets/css/main.css"],

@@ -79,13 +79,38 @@
 </template>
 
 <script setup lang="ts">
+import { Subject } from "rxjs";
+import { switchMap, debounceTime } from "rxjs/operators";
+
 const books = ref([]);
 const showForm = ref(false);
 const isLoggedIn = useState("loggedIn");
 const editing = ref(false);
 
-const { data, refresh } = await fetchData();
-books.value = data.value.books;
+const fetchDataAndUpdateBooks = () => {
+  fetchData()
+    .then(({ data }) => {
+      books.value = data.value.books;
+    })
+    .catch((error) => {
+      console.error("Error fetching data: ", error);
+    });
+};
+
+fetchDataAndUpdateBooks();
+
+const booksSubject = new Subject();
+
+watchEffect(() => {
+  booksSubject.next(books.value);
+});
+
+booksSubject
+  .pipe(
+    debounceTime(300),
+    switchMap(() => fetchDataAndUpdateBooks()),
+  )
+  .subscribe();
 
 const form = ref<BookForm>({
   id: "",
@@ -141,7 +166,6 @@ const handleEditBook = (book: Book) => {
 const handleDeleteBook = async (book: Book) => {
   try {
     await deleteBook(book.id);
-    await refresh();
   } catch (error) {
     console.error("Book deletion error: ", error);
   }
@@ -157,7 +181,6 @@ const handleSubmit = async () => {
 
     resetForm();
     showForm.value = false;
-    refresh();
   } catch (error) {
     console.error("Book saving error: ", error);
   }
