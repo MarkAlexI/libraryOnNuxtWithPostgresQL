@@ -79,36 +79,31 @@
 </template>
 
 <script setup lang="ts">
-import { Subject } from "rxjs";
-import { switchMap, debounceTime } from "rxjs/operators";
+import { Subject, from } from "rxjs";
+import { switchMap, debounceTime, startWith } from "rxjs/operators";
 
 const books = ref([]);
 const showForm = ref(false);
 const isLoggedIn = useState("loggedIn");
 const editing = ref(false);
 
-const fetchDataAndUpdateBooks = () => {
-  fetchData()
-    .then(({ data }) => {
-      books.value = data.value.books;
-    })
-    .catch((error) => {
-      console.error("Error fetching data: ", error);
-    });
+const fetchDataAndUpdateBooks = async () => {
+  try {
+    const { data } = await fetchData();
+    const newBooks = data.value.books;
+    books.value = newBooks;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
 };
 
-fetchDataAndUpdateBooks();
-
 const booksSubject = new Subject();
-
-watchEffect(() => {
-  booksSubject.next(books.value);
-});
 
 booksSubject
   .pipe(
     debounceTime(300),
-    switchMap(() => fetchDataAndUpdateBooks()),
+    startWith(true),
+    switchMap(() => from(fetchDataAndUpdateBooks())),
   )
   .subscribe();
 
@@ -132,23 +127,38 @@ const resetForm = (): void => {
 };
 
 async function saveBook(data: BookForm) {
-  await $fetch("/api/data/books", {
-    method: "POST",
-    body: data,
-  });
+  try {
+    await $fetch("/api/data/books", {
+      method: "POST",
+      body: data,
+    });
+    booksSubject.next();
+  } catch (error) {
+    console.error("Book saving error: ", error);
+  }
 }
 
 async function updateBook(data: BookForm) {
-  await $fetch("/api/data/books", {
-    method: "PUT",
-    body: data,
-  });
+  try {
+    await $fetch("/api/data/books", {
+      method: "PUT",
+      body: data,
+    });
+    booksSubject.next();
+  } catch (error) {
+    console.error("Book updating error: ", error);
+  }
 }
 
 async function deleteBook(bookId: string) {
-  await $fetch(`/api/data/books?id=${bookId}`, {
-    method: "DELETE",
-  });
+  try {
+    await $fetch(`/api/data/books?id=${bookId}`, {
+      method: "DELETE",
+    });
+    booksSubject.next();
+  } catch (error) {
+    console.error("Book deletion error: ", error);
+  }
 }
 
 const handleEditBook = (book: Book) => {
