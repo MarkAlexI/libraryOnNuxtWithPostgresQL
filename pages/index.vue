@@ -34,7 +34,7 @@
 const books = ref([]);
 const { data, error, pending, refresh } = await fetchData();
 
-books.value = data.value.books;
+books.value = data.value?.books;
 
 const genres = computed(() => {
   const uniqueGenres = new Set<string>();

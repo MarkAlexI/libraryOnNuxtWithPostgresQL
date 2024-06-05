@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="mt-8 ml-4 fixed top-0 w-full shadow-md bg-gray-100 bg-opacity-50 backdrop-blur-lg"
+      class="bg-background/75 fixed top-0 w-full shadow-md bg-gray-100 bg-opacity-50 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 -mb-px lg:mb-0 lg:border-0 p-2"
     >
       <ul class="flex">
         <li class="mr-6 ml-3">
