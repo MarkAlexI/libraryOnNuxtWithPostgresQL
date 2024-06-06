@@ -29,6 +29,7 @@ const config: NuxtConfig = {
     PG_DB: process.env.PG_DB,
     PG_PASS: process.env.PG_PASS,
     PG_PORT: Number.parseInt(process.env.PG_PORT, 10),
+    POSTGRES_URL: process.env.POSTGRES_URL,
   },
   experimental: {
     payloadExtraction: false,
