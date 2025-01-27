@@ -29,7 +29,7 @@
     <footer
       class="mt-8 text-center w-full shadow-mt bg-gray-100 bg-opacity-75 backdrop-blur-lg"
     >
-      <p class="mb-2">Created by MarkAlexI 2024</p>
+      <p class="mb-2">Created by MarkAlexI 2025</p>
       <a
         href="https://markalexi.github.io/"
         class="mb-2 text-blue-500 hover:underline"
