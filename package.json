@@ -2,7 +2,7 @@
   "name": "libraryOnNuxtWithPostgresQL",
   "author": "markalexi",
   "description": "Mix of Nuxt, Tailwind, RxJS, VueUse and PostgresQL",
-  "version": "1.36.8",
+  "version": "1.36.9",
   "private": true,
   "type": "module",
   "scripts": {
