@@ -34,6 +34,14 @@ const config: NuxtConfig = {
   },
   experimental: {
     payloadExtraction: false,
+    defaults: {
+      nuxtLinks: {
+        prefetchOn: {
+          visibility: false,
+          interaction: true
+        }
+      }
+    }
   },
   router: {
     options: {
@@ -42,6 +50,9 @@ const config: NuxtConfig = {
   },
   sourcemap: false,
   devtools: { enabled: true },
+  future: {
+    compatibilityVersions: 4
+  },
 };
 
 export default config;
