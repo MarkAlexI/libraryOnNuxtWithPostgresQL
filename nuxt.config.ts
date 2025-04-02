@@ -31,6 +31,7 @@ const config: NuxtConfig = {
     PG_PORT: Number.parseInt(process.env.PG_PORT, 10),
     POSTGRES_URL: process.env.POSTGRES_URL,
     DEV: process.env.DEV,
+    compatibilityDate: process.env.COMPATIBILITY_DATE || '2025-04-02',
   },
   experimental: {
     payloadExtraction: false,
